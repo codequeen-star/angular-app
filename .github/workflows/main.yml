@@ -1,0 +1,24 @@
+name: Angular Build Automation
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  angular-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Project Dependencies
+        run: npm install
+
+      - name: Build Angular Application
+        run: npm run build
